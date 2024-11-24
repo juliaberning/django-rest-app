@@ -1,3 +1,5 @@
+## Steps to set up a Django Rest framework with vue
+
 ### Create a virtual environment
 ```bash
 python3 -m venv .venv
@@ -37,3 +39,11 @@ python3 manage.py startapp products
 ```bash
 python3 manage.py runserver
 ```
+
+### Migrations
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+### Create a super user
+python3 manage.py createsuperuser
+
