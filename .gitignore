@@ -1,8 +1,14 @@
-# Environment variables
-.venv
+# Ignore virtual environment
+.venv/
 
-# VSCode
-.vscode/
-
-# Python
+# Ignore Python cache files
 __pycache__/
+*.py[cod]
+
+# Ignore other common files
+*.db
+*.sqlite3
+*.log
+.env
+*.dot
+*.png
