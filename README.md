@@ -58,7 +58,34 @@ To make the data of the data base readable by the Django REST Framework, they ne
 
 -Add a serializer class for your models to `serializers.py`.
 
--Add two functions to cover basic CRUD operations to `views.py`.
+-Generics: Add two functions to cover basic CRUD operations to `views.py`.
+
+-ViewSet: Similar to generics, but covers basic CRUD operations with one function
 
 -Add urls to `urls.py` (project and app).
 
+## Vue setup
+
+Confirm that node.js is installed correctly.
+https://nodejs.org/en/download/package-manager
+```bash
+node -v
+npm -v
+```
+Install vue.
+
+https://cli.vuejs.org/guide/installation.html
+```bash
+npm install -g @vue/cli
+vue --version
+```
+
+Create a vue 3 project within your Django project.
+
+https://cli.vuejs.org/guide/creating-a-project.html
+```bash
+vue create vue-django
+```
+
+
+Review the settings of the .eslintrc.js file to avoid errors. 
