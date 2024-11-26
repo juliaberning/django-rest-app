@@ -86,6 +86,14 @@ https://cli.vuejs.org/guide/creating-a-project.html
 ```bash
 vue create vue-django
 ```
+Select 
+-Vue 3
+-Babel
+-Vuex 
+-Router (history mode)
+-Linter/Formatter
 
-
-Review the settings of the .eslintrc.js file to avoid errors. 
+Run server
+```bash
+npm run serve
+```
