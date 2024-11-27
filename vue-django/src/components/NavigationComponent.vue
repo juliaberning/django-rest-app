@@ -9,15 +9,37 @@
     />
     <!-- Buttons for Categories -->
     <div class="mt-3">
-      <button type="button" class="btn btn-info">Categoría 1</button>
-      <button type="button" class="btn btn-info">Categoría 2</button>
-      <button type="button" class="btn btn-info">Categoría 3</button>
-      <button type="button" class="btn btn-info">Categoría 4</button>
+      <button
+        type="button"
+        class="btn btn-info"
+        v-for="category in categories"
+        :key="category.id"
+      >
+        {{ category.name }}
+      </button>
     </div>
   </section>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "NavigationComponent",
+
+  data() {
+    return {
+      categories: [],
+    };
+  },
+
+  mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/categories/")
+      .then((response) => {
+        this.categories = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>

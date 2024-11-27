@@ -1,4 +1,7 @@
 # Steps to set up a Django Rest framework with vue
+This project is for learning purposes. 
+It shows how to set up Django REST with Vue according to the youtube channel [código para principiantes](https://www.youtube.com/playlist?list=PLxooeC3-xaNfS7jgZvVUM-kUcrUbgHTWJ).  
+
 
 ## General Project setup
 ### Create a virtual environment
@@ -96,4 +99,48 @@ Select
 Run server
 ```bash
 npm run serve
+```
+
+## Set up Django + Vue.js with Axios
+```bash
+cd vue-django
+npm install axios
+```
+
+To avoid CORS errors we need to install django-cors-headers in our project.
+
+Follow the instructions: 
+https://pypi.org/project/django-cors-headers/
+
+```bash
+python3 -m pip install django-cors-headers
+```
+
+Modify
+- INSTALLED_APPS
+- MIDDLEWARE
+- CORS_ALLOWED_ORIGINS
+- CORS_ALLOW_METHODS
+
+in the ```settings.py``` file of your Django project. 
+It is not necessary to authorize Regexes.
+
+Example for a simple API call with axios:
+```bash
+data() {
+    return {
+      categories: [],
+    };
+  },
+
+  mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/categories/")
+      .then((response) => {
+        this.categories = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 ```
