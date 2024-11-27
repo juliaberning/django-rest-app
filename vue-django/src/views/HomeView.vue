@@ -1,55 +1,48 @@
 <template>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <!-- Product 1 -->
-    <div class="col">
-      <div class="card text-center" style="border: 2px solid gray">
+    <div class="col" v-for="product in products" :key="product.id">
+      <div class="card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          :src="product.image"
+          alt="Imagen de {{ product.name }}"
+        />
         <div class="card-body">
-          <h5 class="card-title">PRODUCT 0</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">CATEGORIA</h6>
-          <p class="card-text">DESCRIPCION DEL PRODUCTO EN CUESTION</p>
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">
+            {{ product.category }}
+          </p>
+          <p class="card-text">
+            {{ product.description }}
+          </p>
+          <p class="card-text">
+            ${{ product.price }} ({{ product.price_type }})
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="card-footer text-danger">PRECIO: $33.33</div>
-      </div>
-    </div>
-
-    <!-- Product 2 -->
-    <div class="col">
-      <div class="card text-center" style="border: 2px solid gray">
-        <div class="card-body">
-          <h5 class="card-title">PRODUCT 0</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">CATEGORIA</h6>
-          <p class="card-text">DESCRIPCION DEL PRODUCTO EN CUESTION</p>
-        </div>
-        <div class="card-footer text-danger">PRECIO: $33.33</div>
-      </div>
-    </div>
-    <!-- Product 3 -->
-    <div class="col">
-      <div class="card text-center" style="border: 2px solid gray">
-        <div class="card-body">
-          <h5 class="card-title">PRODUCT 0</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">CATEGORIA</h6>
-          <p class="card-text">DESCRIPCION DEL PRODUCTO EN CUESTION</p>
-        </div>
-        <div class="card-footer text-danger">PRECIO: $33.33</div>
-      </div>
-    </div>
-    <!-- Product 4 -->
-    <div class="col">
-      <div class="card text-center" style="border: 2px solid gray">
-        <div class="card-body">
-          <h5 class="card-title">PRODUCT 0</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">CATEGORIA</h6>
-          <p class="card-text">DESCRIPCION DEL PRODUCTO EN CUESTION</p>
-        </div>
-        <div class="card-footer text-danger">PRECIO: $33.33</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "HomeView",
+  data() {
+    return {
+      products: [],
+    };
+  },
+  mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/products/")
+      .then((response) => {
+        this.products = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>
