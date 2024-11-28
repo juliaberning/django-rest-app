@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <NavbarComponent />
-    <NavigationComponent />
+    <NavigationComponent v-if="$route.path === '/about'" />
     <router-view />
     <FooterComponent />
   </div>

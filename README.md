@@ -122,7 +122,7 @@ Modify
 - CORS_ALLOWED_ORIGINS
 - CORS_ALLOW_METHODS
 
-in the ```settings.py``` file of your Django project. 
+in the `settings.py` file of your Django project. 
 It is not necessary to authorize Regexes.
 
 Example for a simple API call with axios:
@@ -143,4 +143,27 @@ data() {
         console.log(error);
       });
   },
+```
+
+## Other functionalities
+
+### Accessing data from other models
+To display data from related models (for example: models connected via foreign keys), use the `ReadOnlyField` in your serializer.
+
+### Filtering per category
+
+Install Django filer and add to `INSTALLED_APPS`.
+
+https://pypi.org/project/django-filter/
+
+```bash
+pip install django-filter
+```
+
+Like indicated in the [Django REST documentation](https://www.django-rest-framework.org/api-guide/filtering/#setting-filter-backends), add the `DEFAULT_FILTER_BACKENDS` setting to the `settings.py` of the django project.
+
+Then add the filters to the serializers, as described in pypi. 
+
+```bash
+from django_filters import rest_framework as filters
 ```

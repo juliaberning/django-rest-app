@@ -14,6 +14,7 @@
         class="btn btn-info"
         v-for="category in categories"
         :key="category.id"
+        @click="getCategoryID(category.id, category.name)"
       >
         {{ category.name }}
       </button>
@@ -28,7 +29,14 @@ export default {
   data() {
     return {
       categories: [],
+      categoryID: null,
+      categoryName: null,
     };
+  },
+  methods: {
+    getCategoryID(categoryID, categoryName) {
+      this.$emit("getCategoryID", categoryID, categoryName);
+    },
   },
 
   mounted() {
