@@ -3,10 +3,13 @@ from django_filters import rest_framework as filters
 from .models import Category, Product
 
 class ProductFilter(filters.FilterSet):
+    category = filters.NumberFilter(field_name='category', lookup_expr='exact')
+    name = filters.CharFilter(field_name='name', lookup_expr='icontains') # Filtrar por nombre que contenga la cadena
     class Meta:
         model = Product
         fields = {
             'category': ['exact'],
+            'name': ['icontains'],
         }
 
 class ProductSerializer(serializers.ModelSerializer):

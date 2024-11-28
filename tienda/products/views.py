@@ -12,9 +12,17 @@ class ProductViewSet(viewsets.ModelViewSet):
     # http://127.0.0.1:8000/api/products/?category=3
     def get_queryset(self):
         queryset =  super().get_queryset()
+
+        # Filtado por categoría
         category = self.request.query_params.get('category')
         if category:
             queryset = queryset.filter(category=category)
+        
+        # Filtado por nombre de producto
+        search = self.request.query_params.get('search', None)
+        if search: 
+            queryset = queryset.filter(name__icontains=search)
+        
         return queryset
 
     # Filtrar productos por categoría
