@@ -3,8 +3,3 @@
     <p>&copy;2024 Tutorial Código para principiantes</p>
   </footer>
 </template>
-<script>
-export default {
-  name: "FooterComponent",
-};
-</script>

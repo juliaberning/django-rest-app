@@ -14,40 +14,33 @@
         class="btn btn-info"
         v-for="category in categories"
         :key="category.id"
-        @click="getCategoryID(category.id, category.name)"
+        @click="getCategory(category.id, category.name)"
       >
         {{ category.name }}
       </button>
     </div>
   </section>
 </template>
-<script>
+<script setup>
 import axios from "axios";
-export default {
-  name: "NavigationComponent",
+import { ref, defineEmits, onMounted } from "vue";
 
-  data() {
-    return {
-      categories: [],
-      categoryID: null,
-      categoryName: null,
-    };
-  },
-  methods: {
-    getCategoryID(categoryID, categoryName) {
-      this.$emit("getCategoryID", categoryID, categoryName);
-    },
-  },
+const categories = ref([]);
 
-  mounted() {
-    axios
-      .get("http://127.0.0.1:8000/api/categories/")
-      .then((response) => {
-        this.categories = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
+const emit = defineEmits(["getCategoryID"]);
+
+const getCategory = (id, name) => {
+  emit("getCategoryID", id, name);
 };
+
+onMounted(() => {
+  axios
+    .get("http://127.0.0.1:8000/api/categories/")
+    .then((response) => {
+      categories.value = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 </script>

@@ -7,19 +7,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import NavigationComponent from "@/components/NavigationComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
-
-export default {
-  name: "App",
-  components: {
-    FooterComponent,
-    NavbarComponent,
-    NavigationComponent,
-  },
-};
 </script>
 
 <style>
